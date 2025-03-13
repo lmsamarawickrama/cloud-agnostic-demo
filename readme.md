@@ -1,5 +1,23 @@
 # Don't Compile Your Business Code Over Cloud Provider's Change: Building Cloud-Agnostic Applications with Dependency Inversion
 
++------------------+       +---------------------------+
+|  Business Logic  | ----> |  Cloud Operations Interface  |
++------------------+       +---------------------------+
+                                 ^           ^           ^
+                                 |           |           |
+                                 |           |           |
+                +----------------+           |           +----------------+
+                |                            |                            |
++---------------------+    +---------------------+    +---------------------+
+|  AWS Implementation |    |  Azure Implementation |    |  GCP Implementation |
++---------------------+    +---------------------+    +---------------------+
+        ^                            ^                            ^
+        |                            |                            |
+        |                            |                            |
++----------------+        +----------------+        +----------------+
+|      AWS       |        |     Azure      |        |      GCP       |
++----------------+        +----------------+        +----------------+
+
 ## Introduction
 
 In today’s multi-cloud world, businesses often need to switch cloud providers or use multiple providers simultaneously. However, tightly coupling your application to a specific cloud provider’s SDK can lead to vendor lock-in and make migrations costly and time-consuming. In this article, we’ll explore how to build cloud-agnostic applications using dependency inversion, ensuring that your business logic remains unchanged even if the cloud provider changes.
