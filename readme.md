@@ -57,14 +57,18 @@ In the context of cloud-agnostic applications:
 
 ## Comparison with Spring Cloud
 
-spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems (e.g., configuration management, service discovery, circuit breakers, intelligent routing, micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions, cluster state). Spring Cloud integrates seamlessly with other Spring projects (e.g., Spring Boot, Spring Security).
+# Comparison with Spring Cloud
 
-For more information, visit the [Spring Cloud GCP project](https://spring.io/projects/spring-cloud-gcp).
+Spring Cloud is another way of achieving cloud-agnostic behavior. It provides tools for developers to quickly build some of the common patterns in distributed systems.
+
+For more information, visit the [Spring Cloud  project](https://spring.io/projects/spring-cloud).
+
+However, it will not cover all use cases, especially for advanced or provider-specific features.
 
 ### Pros of Using Spring Cloud
 
 - **Built-In Abstractions**:
-  - Spring Cloud provides ready-to-use abstractions for common cloud-native patterns (e.g., configuration, service discovery).
+  - Spring Cloud provides ready-to-use abstractions for common cloud-native patterns (e.g., configuration, event driver).
 - **Reduced Boilerplate**:
   - Spring Cloud handles much of the boilerplate code, allowing you to focus on business logic.
 - **Ecosystem Integration**:
@@ -81,12 +85,11 @@ For more information, visit the [Spring Cloud GCP project](https://spring.io/pro
 
 ## When to Use Dependency Inversion vs. Spring Cloud
 
-- **Use Dependency Inversion**:
+- **Use Dependency Inversion Approach**:
   - When you need full control over the abstractions and implementations.
   - When you want to avoid dependencies on third-party libraries.
   - When you plan to support multiple cloud providers and want to ensure portability.
 - **Use Spring Cloud**:
-  - When you’re already using the Spring ecosystem and want to leverage its built-in abstractions.
   - When you want to reduce boilerplate code and speed up development.
   - When you don’t need advanced or provider-specific features.
 
