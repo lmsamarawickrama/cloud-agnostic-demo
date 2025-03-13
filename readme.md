@@ -1,23 +1,5 @@
 # Don't Compile Your Business Code Over Cloud Provider's Change: Building Cloud-Agnostic Applications with Dependency Inversion
 
-+------------------+       +---------------------------+
-|  Business Logic  | ----> |  Cloud Operations Interface  |
-+------------------+       +---------------------------+
-                                 ^           ^           ^
-                                 |           |           |
-                                 |           |           |
-                +----------------+           |           +----------------+
-                |                            |                            |
-+---------------------+    +---------------------+    +---------------------+
-|  AWS Implementation |    |  Azure Implementation |    |  GCP Implementation |
-+---------------------+    +---------------------+    +---------------------+
-        ^                            ^                            ^
-        |                            |                            |
-        |                            |                            |
-+----------------+        +----------------+        +----------------+
-|      AWS       |        |     Azure      |        |      GCP       |
-+----------------+        +----------------+        +----------------+
-
 ## Introduction
 
 In today’s multi-cloud world, businesses often need to switch cloud providers or use multiple providers simultaneously. However, tightly coupling your application to a specific cloud provider’s SDK can lead to vendor lock-in and make migrations costly and time-consuming. In this article, we’ll explore how to build cloud-agnostic applications using dependency inversion, ensuring that your business logic remains unchanged even if the cloud provider changes.
@@ -55,9 +37,34 @@ In the context of cloud-agnostic applications:
 - **Maintenance**:
   - Maintaining multiple implementations for different cloud providers can increase the maintenance burden.
 
-## Comparison with Spring Cloud
+## How Our Media Service is Built Using This Approach
 
-# Comparison with Spring Cloud
+Our media service is designed to be cloud-agnostic by following the dependency inversion principle. Here is a high-level overview of the architecture and flow:
+
+1. **Business Logic Layer**:
+   - This layer contains the core business logic of the media service, such as media processing, media upload and etc.
+
+2. **Abstraction Layer: cloud-agnostic-api**:
+   - This layer defines the generic interfaces for cloud operations.
+   - Interfaces include methods for dealing with storage, sebd/receive messages with message borkers
+     We justify this approach by keeping the abstraction layer as a separate library (`cloud-agnostic-api`). This allows the interfaces to be reused across multiple projects, promoting reusability and reducing duplication of effort. If we were to keep this layer within the project itself, it would limit its usability to only that specific project and prevent other projects from leveraging the same abstractions.
+
+3. **Cloud-Specific Implementations (Ex: gcp-cloud-sdk)**:
+   - This layer contains implementations of the generic interfaces for specific cloud providers (e.g., AWS, Azure, GCP).
+   - Each implementation interacts with the respective cloud provider's SDK to perform the required operations.
+
+### Flow Diagram
+
+![Cloud-Agnostic Strategy](resources/cloud-agnostic.png)
+
+### Example Flow
+
+1. **Upload Media**:
+   - The business logic layer calls the `uploadFile` method on the cloud operations interface.
+   - The abstraction layer forwards the call to the appropriate cloud-specific implementation based on the dependency provided.
+   - The cloud-specific implementation uses the cloud provider's SDK to upload the media/file to the cloud storage.
+
+## Comparison with Spring Cloud
 
 Spring Cloud is another way of achieving cloud-agnostic behavior. It provides tools for developers to quickly build some of the common patterns in distributed systems.
 
