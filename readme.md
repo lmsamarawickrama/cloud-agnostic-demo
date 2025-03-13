@@ -1,4 +1,4 @@
-# Building Cloud-Agnostic Applications with Dependency Inversion
+# Don't Compile Your Business Code Over Cloud Provider's Change: Building Cloud-Agnostic Applications with Dependency Inversion
 
 ## Introduction
 
@@ -34,12 +34,14 @@ In the context of cloud-agnostic applications:
 
 - **Initial Complexity**:
   - Setting up abstractions and interfaces can introduce initial complexity and require more upfront design effort.
-- **Performance Overhead**:
-  - Abstraction layers may introduce slight performance overhead compared to direct SDK usage.
 - **Maintenance**:
   - Maintaining multiple implementations for different cloud providers can increase the maintenance burden.
 
 ## Comparison with Spring Cloud
+
+spring Cloud provides tools for developers to quickly build some of the common patterns in distributed systems (e.g., configuration management, service discovery, circuit breakers, intelligent routing, micro-proxy, control bus, one-time tokens, global locks, leadership election, distributed sessions, cluster state). Spring Cloud integrates seamlessly with other Spring projects (e.g., Spring Boot, Spring Security).
+
+For more information, visit the [Spring Cloud GCP project](https://spring.io/projects/spring-cloud-gcp).
 
 ### Pros of Using Spring Cloud
 
