@@ -21,7 +21,7 @@ public class GcpCloudStorageService implements CloudStorageService {
         BlobId blobId = BlobId.of(bucketName, fileName);
         BlobInfo blobInfo = BlobInfo.newBuilder(blobId).build();
         storage.create(blobInfo, fileStream);
-        return "File uploaded to GCP Cloud Storage: " + fileName;
+        return bucketName + fileName;
     }
 
     @Override

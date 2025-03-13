@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cloud.demo</groupId>
 	<artifactId>gcp-cloud-sdk</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>gcp-cloud-sdk</name>
 	<description>Demo project to Demo use of cloud neutral way of working</description>
 	<url/>
