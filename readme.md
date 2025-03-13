@@ -46,8 +46,8 @@ Our media service is designed to be cloud-agnostic by following the dependency i
 
 2. **Abstraction Layer: cloud-agnostic-api**:
    - This layer defines the generic interfaces for cloud operations.
-   - Interfaces include methods for dealing with storage, sebd/receive messages with message borkers
-     We justify this approach by keeping the abstraction layer as a separate library (`cloud-agnostic-api`). This allows the interfaces to be reused across multiple projects, promoting reusability and reducing duplication of effort. If we were to keep this layer within the project itself, it would limit its usability to only that specific project and prevent other projects from leveraging the same abstractions.
+   - Interfaces include methods for dealing with storage, send/receive messages with message borkers.
+   - Keeping the abstraction layer as a separate library (`cloud-agnostic-api`). allows the interfaces to be reused across multiple projects, promoting reusability and reducing duplication of effort. If we were to keep this layer within the project itself, it would limit its usability to only that specific project and prevent other projects from leveraging the same abstractions.
 
 3. **Cloud-Specific Implementations (Ex: gcp-cloud-sdk)**:
    - This layer contains implementations of the generic interfaces for specific cloud providers (e.g., AWS, Azure, GCP).
